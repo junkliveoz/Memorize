@@ -18,6 +18,8 @@ struct ContentView: View {
     init() {
         playerEmojis = animalEmojis.shuffled()
     }
+    
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -32,6 +34,8 @@ struct ContentView: View {
         }
         
     }
+    
+    
     
     var cards: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: CGFloat(cardSize)))]) {
@@ -58,19 +62,6 @@ struct ContentView: View {
             .font(.footnote)
     }
     
-    func cardTheme(icon: String, name: String, emojiSet: [String], color: Color, size: Int) -> some View {
-        VStack {
-            Button(action: {
-                playerEmojis = emojiSet.shuffled()
-                themeColor = color
-                cardSize = size
-            }, label : {
-                Image(systemName: icon)
-            })
-            Text(name)
-        }
-    }
-    
     var themeOptions: some View {
             HStack {
                 animalTheme
@@ -82,11 +73,26 @@ struct ContentView: View {
     var animalTheme: some View {
         return cardTheme(icon: "dog.fill", name: "Animal", emojiSet: animalEmojis, color: .green, size: 90)
     }
+    
     var vehicleTheme: some View {
         return cardTheme(icon: "car.fill", name: "Vehicles", emojiSet: vehicleEmojis, color: .orange, size:82)
     }
+    
     var halloweenTheme: some View {
         return cardTheme(icon: "moon.fill", name: "Halloween", emojiSet: halloweenEmojis, color: .purple, size: 80)
+    }
+    
+    func cardTheme(icon: String, name: String, emojiSet: [String], color: Color, size: Int) -> some View {
+        VStack {
+            Button(action: {
+                playerEmojis = emojiSet.shuffled()
+                themeColor = color
+                cardSize = size
+            }, label : {
+                Image(systemName: icon)
+            })
+            Text(name)
+        }
     }
 }
 
