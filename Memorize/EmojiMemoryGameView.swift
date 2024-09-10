@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift
 //  Memorize
 //
 //  Created by Adam Sayer on 17/8/2024.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
+    var viewModel: EmojiMemoryGame
+    
     @State private var themeColor: Color = .green
     @State private var cardSize = 90
     let animalEmojis = ["🐶", "🐶", "🐭", "🐭", "🐵", "🐵", "🐍", "🐍"]
@@ -122,5 +124,5 @@ struct CardView: View {
 }
 
 #Preview {
-    ContentView()
+    EmojiMemoryGameView()
 }
